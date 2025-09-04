@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import { TextInput, StyleSheet } from "react-native";
 
 export default function Input(props) {
-    const [task, setTask] = useState("");
     return (
         <TextInput 
             style = {styles[props.size]}
-            value = {task}
-            onChangeText = {setTask}
+            value = {props.value}
+            onChangeText = {props.onChangeText}
             placeholder = "Digite uma tarefa"
+            returnKeyType="done"
         />
     )
 }

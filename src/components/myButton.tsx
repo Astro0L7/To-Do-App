@@ -2,8 +2,11 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 export default function MyButton(props) {
     return (
-        <TouchableOpacity style={[styles.button, styles[props.size]]} activeOpacity={0.8}> 
-            <Text style={styles.texto}>Adicionar</Text>
+        <TouchableOpacity
+            style={[styles.button, styles[props.size]]} 
+            activeOpacity={0.8}
+            onPress={props.onPress}>
+                <Text style={styles.texto}>{props.children}</Text>
         </TouchableOpacity>
     )
 }

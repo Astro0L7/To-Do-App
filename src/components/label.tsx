@@ -2,7 +2,7 @@ import { Text, StyleSheet } from 'react-native';
 
 export default function Label(props) {
     return (
-        <Text style={styles.font}>Tarefa X</Text>
+        <Text style={styles.font}>{props.children}</Text>
     )
 }
 

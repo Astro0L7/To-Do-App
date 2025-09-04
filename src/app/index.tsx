@@ -1,48 +1,33 @@
+import { useState } from 'react';
+
 import Title from '../components/title';
 import Input from '../components/input';
 import Container from '../components/container';
 import MyButton from '../components/myButton';
 import AddTask from '../components/addTask';
 import List from '../components/list'
-import Task from '../components/task';
-import Checkbox from '../components/checkbox';
-import Label from '../components/label';
-
-
-/*
-    Metas para concluir o projeto To-Do:
-- Atualizar o botão de adicionar tarefa: O botão deve pegar o texto do input e setar na label de tarefa
-- Colocar as task's em um vetor: sempre que uma nova for criada ela deve ser adicionada no último espaço do vetor
-- Deixar o checkbox funcional
-- Adicionar novas funcionalidades: excluir tarefa, editar tarefa e outras.
-*/
-
 
 export default function App() {
+    const [tasks, setTasks] = useState([{id: Date.now(), text:'exemplo'}]);
+    const [text, setText] = useState("");
+
+    function addTask() {
+        const trimmedText = text.trim(); // Tratando o texto - remove os espaços no início e no fim.
+        if (!trimmedText) return; // Verifica se há um texto
+
+        setTasks([...tasks, { id: Date.now(), text: trimmedText }]); // Set no array task - cada task é um obj com id e text
+        setText(""); // Limpa o input
+        console.log("texto do input: ",text);
+    }
+
     return (
         <Container>
             <Title size="h1">Lista de Tarefas</Title>
             <AddTask>
-                <Input size='medium'/>
-                <MyButton size='small'/>
+                <Input size='medium' value={text} onChangeText={setText} add={addTask}/>
+                <MyButton size='small' onPress={addTask}>Adicionar</MyButton>
             </AddTask>
-            <List>
-                <Task>
-                    <Checkbox></Checkbox> <Label></Label>
-                </Task>
-                <Task>
-                    <Checkbox></Checkbox> <Label></Label>
-                </Task>
-                <Task>
-                    <Checkbox></Checkbox> <Label></Label>
-                </Task>
-                <Task>
-                    <Checkbox></Checkbox> <Label></Label>
-                </Task>
-                <Task>
-                    <Checkbox></Checkbox> <Label></Label>
-                </Task>
-            </List>
+            <List tasks={tasks} />
         </Container>
     );
 }

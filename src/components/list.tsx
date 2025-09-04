@@ -1,9 +1,23 @@
-import { View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
+import Task from './task';
+import Checkbox from './checkbox';
+import Label from './label';
 
 export default function List(props) {
-    return (
-        <View style={styles.listStyle}>
-            {props.children}
+    console.log(props.tasks);
+
+    return (    
+        <View style={styles.listStyle}>    
+            <FlatList 
+                data={props.tasks}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({item: task}) => ( 
+                    <Task>
+                        <Checkbox /><Label>{task.text}</Label>
+                    </Task>
+                    )
+                }
+            />
         </View>
     )
 }
