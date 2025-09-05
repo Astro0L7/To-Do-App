@@ -4,10 +4,8 @@ import Checkbox from './checkbox';
 import Label from './label';
 
 export default function List(props) {
-    console.log(props.tasks);
-
     return (    
-        <View style={styles.listStyle}>    
+        <View style={styles.listStyle}>
             <FlatList 
                 data={props.tasks}
                 keyExtractor={item => item.id.toString()}
@@ -17,6 +15,8 @@ export default function List(props) {
                     </Task>
                     )
                 }
+
+                ListEmptyComponent={<Label>Não há tarefas</Label>}
             />
         </View>
     )

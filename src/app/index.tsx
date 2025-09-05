@@ -8,7 +8,8 @@ import AddTask from '../components/addTask';
 import List from '../components/list'
 
 export default function App() {
-    const [tasks, setTasks] = useState([{id: Date.now(), text:'exemplo'}]);
+    type Task = { id: number; text: string };
+    const [tasks, setTasks] = useState<Task[]>([]);
     const [text, setText] = useState("");
 
     function addTask() {
@@ -27,7 +28,9 @@ export default function App() {
                 <Input size='medium' value={text} onChangeText={setText} add={addTask}/>
                 <MyButton size='small' onPress={addTask}>Adicionar</MyButton>
             </AddTask>
-            <List tasks={tasks} />
+            <List tasks={tasks}>
+                
+            </List>
         </Container>
     );
 }
