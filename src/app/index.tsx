@@ -28,9 +28,7 @@ export default function App() {
                 <Input size='medium' value={text} onChangeText={setText} add={addTask}/>
                 <MyButton size='small' onPress={addTask}>Adicionar</MyButton>
             </AddTask>
-            <List tasks={tasks}>
-                
-            </List>
+            <List tasks={tasks} />
         </Container>
     );
 }

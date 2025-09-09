@@ -1,6 +1,4 @@
 import { View, StyleSheet } from 'react-native';
-import Checkbox from './checkbox';
-import Label from './label';
 
 export default function Task(props) {
     return (

@@ -2,6 +2,7 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import Task from './task';
 import Checkbox from './checkbox';
 import Label from './label';
+import Delete from './delete';
 
 export default function List(props) {
     return (    
@@ -11,7 +12,7 @@ export default function List(props) {
                 keyExtractor={item => item.id.toString()}
                 renderItem={({item: task}) => ( 
                     <Task>
-                        <Checkbox /><Label>{task.text}</Label>
+                        <Checkbox /><Label>{task.text}</Label> <Delete />
                     </Task>
                     )
                 }
